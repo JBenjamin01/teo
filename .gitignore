@@ -1,0 +1,61 @@
+# Ignorar directorios y archivos de Visual Studio Code
+.vscode/
+
+# Archivos de compilación y temporales de C++
+##########################################
+# Archivos de objeto, librerías y binarios
+*.o
+*.out
+*.exe
+*.obj
+*.lib
+*.so
+*.a
+# Directorios de compilación comunes
+build/
+bin/
+Debug/
+Release/
+
+# Archivos de compilación y temporales de Java
+##########################################
+# Archivos de clase compilados
+*.class
+# Directorios de compilación comunes (Maven, Gradle)
+target/
+bin/
+# Archivos JAR y WAR
+*.jar
+*.war
+# Archivos de log
+*.log
+# Archivos de configuración de IDEs (para otros IDEs que no sean VSCode)
+.idea/
+.project
+.classpath
+.settings/
+
+# Archivos de compilación y temporales de Go
+##########################################
+# Binarios del programa
+*.exe
+# Directorio de módulos Go
+vendor/
+# Archivos de prueba
+*_test.go
+# Cache de compilación
+.cache/
+
+# Archivos de sistema y otros comunes
+##########################################
+# Archivos de macOS
+.DS_Store
+# Archivos de miniaturas de Windows
+Thumbs.db
+# Archivos de swap de Vim
+*.swp
+# Archivos de backup
+*~
+# Archivos que el usuario no debería subir
+.env
+.local
