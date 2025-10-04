@@ -1,6 +1,4 @@
 import java.util.*;
-
-import javav.Trapecio;
 class Worker extends Thread {
     private double a, b, rango, area;
 
@@ -17,7 +15,7 @@ class Worker extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Hilo de " + this.a + " a " + this.b + " iniciado.");
+        System.out.println("Hilo de " + this.a + " a " + this.b + " iniciado");
         double a1 = a;
         double b1 = 0;
         while(a1 < b){
@@ -34,13 +32,13 @@ class Worker extends Thread {
 
 }
 
-public class AreaBajoLaCurva implement Exception{
+public class AreaBajoLaCurva{
     
     public static double rango(double a, double b, int num){
         return (b - a)*1.0/num;
     }
-    public static double subrango(int h){
-        return this.rango / h;
+    public static double subrango(double r, int h){
+        return r / h;
     }
 
     public static void main(String[] args) {
@@ -49,7 +47,7 @@ public class AreaBajoLaCurva implement Exception{
         double a = 0;
         double b = 10;
         double rango = rango(a, b, numTrapecios);
-        double subRango = subrango(numHilos);
+        double subRango = 100/5;
         Worker[] hilos = new Worker[numHilos];
 
         for (int i = 0; i < numHilos; i++) {
@@ -62,7 +60,11 @@ public class AreaBajoLaCurva implement Exception{
 
         double area = 0;
         for (Worker w : hilos) {
-            w.join();
+            try {
+                w.join();
+            } catch (InterruptedException e) {
+                System.err.println("Hilo interrumpido");
+            }
             area += w.getArea();
         }
 
