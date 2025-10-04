@@ -1,4 +1,11 @@
 import java.util.*;
+public class Trapecio{
+    static double area(double a, double b, double h){
+        double area = ((a + b) * h) / 2;
+        return area;
+    }
+}
+
 class Worker extends Thread {
     private double a, b, rango, area;
 
@@ -17,13 +24,13 @@ class Worker extends Thread {
     public void run() {
         System.out.println("Hilo de " + this.a + " a " + this.b + " iniciado");
         double a1 = a;
-        double b1 = 0;
-        while(a1 < b){
-            a1 = hallarPunto(a1);
-            b1 = hallarPunto(a1 + this.rango);
-            this.area += Trapecio.area(a1, b1, this.rango);
+        while (a1 < b) {
+            double y1 = hallarPunto(a1);
+            double y2 = hallarPunto(a1 + this.rango);
+            this.area += Trapecio.area(y1, y2, this.rango);
             a1 += this.rango;
         }
+
     }
 
     public double getArea() {
@@ -47,7 +54,7 @@ public class AreaBajoLaCurva{
         double a = 0;
         double b = 10;
         double rango = rango(a, b, numTrapecios);
-        double subRango = 100/5;
+        double subRango = (b - a) / numHilos;
         Worker[] hilos = new Worker[numHilos];
 
         for (int i = 0; i < numHilos; i++) {
